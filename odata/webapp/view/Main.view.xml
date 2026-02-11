@@ -3,7 +3,15 @@
     xmlns="sap.m">
     <Page id="page" title="{i18n>title}">
         <Table id="idProductsTable"
-               items="{/Product}" >
+               items="{
+                    path: '/Products',
+                    sorter: {
+                        path: 'ProductName'
+                    },
+                    filters: [
+                        { path: 'Discontinued', operator: 'NE', value1: true }
+                    ]
+               }" >
             <headerToolbar>
                 <OverflowToolbar id="tableOFHeaderToolbar">
                     <Title id="idTableTitle" text="{i18n>tableTitle}" />
@@ -11,20 +19,39 @@
             </headerToolbar>
             <infoToolbar>
                 <OverflowToolbar id="tableOFInfoToolbar">
-                    {Label text="{i18n>tableInfoText}"} />
+                    <Label id="idInfoText" text="{i18n>tableInfoText}" />
                 </OverflowToolbar>
             </infoToolbar>
             <columns>
-                <Column >
-                    <Text text="Product" />
+                <Column id="idProductCol">
+                    <Text id="idProductColText" text="{i18n>productCol}" />
                 </Column>
-                <Column >
-                    <Text text="Supplier ID" />
+                <Column id="idSupplierIdCol">
+                    <Text id="idSupplierIdColText" text="{i18n>supplierIdCol}" />
                 </Column>
-                <Column >
-                    <Text text="Price" />
+                <Column id="idPriceCol">
+                    <Text id="idPriceColText" text="{i18n>priceCol}" />
                 </Column>
             </columns>
+            <items>
+                <ColumnListItem id="idProductItems">
+                    <cells>
+                        <ObjectIdentifier 
+                            id="idProductCell"
+                            title="{ProductName}"
+                            text="{i18n>priceIdText} {ProductID}" />
+
+                        <Text 
+                            id="idSupplierIdCell"
+                            text="{SupplierID}" />
+
+                        <ObjectIdentifier 
+                            id="idPriceCell"
+                            title="{UnitPrice}"
+                            text="{QuantityPerUnit}"/>
+                    </cells>
+                </ColumnListItem>
+            </items>
         </Table>
     </Page>
 </mvc:View>
