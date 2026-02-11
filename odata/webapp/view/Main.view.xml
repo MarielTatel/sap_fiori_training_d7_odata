@@ -1,0 +1,30 @@
+<mvc:View controllerName="sapips.training.odata.controller.Main"
+    xmlns:mvc="sap.ui.core.mvc"
+    xmlns="sap.m">
+    <Page id="page" title="{i18n>title}">
+        <Table id="idProductsTable"
+               items="{/Product}" >
+            <headerToolbar>
+                <OverflowToolbar id="tableOFHeaderToolbar">
+                    <Title id="idTableTitle" text="{i18n>tableTitle}" />
+                </OverflowToolbar>
+            </headerToolbar>
+            <infoToolbar>
+                <OverflowToolbar id="tableOFInfoToolbar">
+                    {Label text="{i18n>tableInfoText}"} />
+                </OverflowToolbar>
+            </infoToolbar>
+            <columns>
+                <Column >
+                    <Text text="Product" />
+                </Column>
+                <Column >
+                    <Text text="Supplier ID" />
+                </Column>
+                <Column >
+                    <Text text="Price" />
+                </Column>
+            </columns>
+        </Table>
+    </Page>
+</mvc:View>
